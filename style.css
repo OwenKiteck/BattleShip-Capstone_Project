@@ -1,0 +1,22 @@
+td {
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+tr {
+    padding: 0;
+    margin: 0;
+}
+.no-box {
+    border: none;
+    text-align: right;
+    padding-right: 8px;
+    font-weight: bold;
+}
+table {
+    padding: 0;
+    margin: 0;
+}
