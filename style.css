@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(124, 140, 151);
+    background-color: rgb(33, 33, 61);
 }
 
 header h1 {
@@ -18,8 +18,13 @@ td {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: white;
+    background-color: aqua;
 }
+
+.ship {
+    background-color: gray;
+}
+
 tr {
     padding: 0;
     margin: 0;
@@ -30,9 +35,22 @@ tr {
     padding-right: 8px;
     font-weight: bold;
     background-color: transparent;
+    color: white;
 
 }
 table {
     padding: 0;
     margin: 0;
+}
+
+.boat {
+    background-color: rgb(139, 126, 126);
+}
+
+th {
+    color: white;
+}
+
+main {
+    color: white;
 }

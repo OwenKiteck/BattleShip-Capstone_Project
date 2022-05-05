@@ -110,6 +110,17 @@ const OJ8 = document.querySelector(`#opponent #J8`);
 const OJ9 = document.querySelector(`#opponent #J9`);
 const OJ0 = document.querySelector(`#opponent #J0`);
 
+const opponentSquaresA = [OA1, OA2, OA3, OA4, OA5, OA6, OA7, OA8, OA9, OA0];
+const opponentSquaresB = [OB1, OB2, OB3, OB4, OB5, OB6, OB7, OB8, OB9, OB0];
+const opponentSquaresC = [OC1, OC2, OC3, OC4, OC5, OC6, OC7, OC8, OC9, OC0];
+const opponentSquaresD = [OD1, OD2, OD3, OD4, OD5, OD6, OD7, OD8, OD9, OD0];
+const opponentSquaresE = [OE1, OE2, OE3, OE4, OE5, OE6, OE7, OE8, OE9, OE0];
+const opponentSquaresF = [OF1, OF2, OF3, OF4, OF5, OF6, OF7, OF8, OF9, OF0];
+const opponentSquaresG = [OG1, OG2, OG3, OG4, OG5, OG6, OG7, OG8, OG9, OG0];
+const opponentSquaresH = [OH1, OH2, OH3, OH4, OH5, OH6, OH7, OH8, OH9, OH0];
+const opponentSquaresI = [OI1, OI2, OI3, OI4, OI5, OI6, OI7, OI8, OI9, OI0];
+const opponentSquaresJ = [OJ1, OJ2, OJ3, OJ4, OJ5, OJ6, OJ7, OJ8, OJ9, OJ0];
+const opponentSquares = [opponentSquaresA, opponentSquaresB, opponentSquaresC, opponentSquaresD, opponentSquaresE, opponentSquaresF, opponentSquaresG, opponentSquaresH, opponentSquaresI, opponentSquaresJ];
 
 // Selectors for each square in your table
 
@@ -223,24 +234,126 @@ const MJ8 = document.querySelector(`#my-board #J8`);
 const MJ9 = document.querySelector(`#my-board #J9`);
 const MJ0 = document.querySelector(`#my-board #J0`);
 
-OA1.addEventListener(`click`, () => {
-    alert(`opponents A1`)
+const mySquaresA = [MA1, MA2, MA3, MA4, MA5, MA6, MA7, MA8, MA9, MA0];
+const mySquaresB = [MB1, MB2, MB3, MB4, MB5, MB6, MB7, MB8, MB9, MB0];
+const mySquaresC = [MC1, MC2, MC3, MC4, MC5, MC6, MC7, MC8, MC9, MC0];
+const mySquaresD = [MD1, MD2, MD3, MD4, MD5, MD6, MD7, MD8, MD9, MD0];
+const mySquaresE = [ME1, ME2, ME3, ME4, ME5, ME6, ME7, ME8, ME9, ME0];
+const mySquaresF = [MF1, MF2, MF3, MF4, MF5, MF6, MF7, MF8, MF9, MF0];
+const mySquaresG = [MG1, MG2, MG3, MG4, MG5, MG6, MG7, MG8, MG9, MG0];
+const mySquaresH = [MH1, MH2, MH3, MH4, MH5, MH6, MH7, MH8, MH9, MH0];
+const mySquaresI = [MI1, MI2, MI3, MI4, MI5, MI6, MI7, MI8, MI9, MI0];
+const mySquaresJ = [MJ1, MJ2, MJ3, MJ4, MJ5, MJ6, MJ7, MJ8, MJ9, MJ0];
+const mySquares = [mySquaresA, mySquaresB, mySquaresC, mySquaresD, mySquaresE, mySquaresF, mySquaresG, mySquaresH, mySquaresI, mySquaresJ];
+
+
+
+
+OC3.addEventListener(`click`, () => {
+    if(OC3.classList == `boat`){
+        alert(`yup`)
+    }
 }); 
 MA1.addEventListener(`click`, () => {
     alert(`Your A1`)
-}); 
+});
+
+// Functions for ship placements
+function randomLocation(length) {
+    
+}
+
+function placeShip(length, location) {
+    
+}
+
+function randomizePlacement(possess) {
+    placeShip(5, randomLocation(5));
+    placeShip(4, randomLocation(4));
+    placeShip(3, randomLocation(3));
+    placeShip(3, randomLocation(3));
+    placeShip(2, randomLocation(2));
+} 
 
 // Selecting the ships for choosing locations
-let selectedShip;
-
-const fiveLong = document.querySelector(`#five-long`);
-const fourLong = document.querySelector(`#four-long`);
-const threeLong1 = document.querySelector(`#three-long`);
-const threeLong2 = document.querySelector(`#three-long-two`);
-const twoLong = document.querySelector(`#two-long`);
 
 
+{
+    let selectedShip;
+    const fiveLong = document.querySelector(`#five-long`);
+    const fourLong = document.querySelector(`#four-long`);
+    const threeLong1 = document.querySelector(`#three-long`);
+    const threeLong2 = document.querySelector(`#three-long-two`);
+    const twoLong = document.querySelector(`#two-long`);
+    // Selecting the ship you want to place
+    fiveLong.addEventListener(`click`, () => {
+        selectedShip = `5`;
+        console.log(selectedShip);
+    }); 
+    fourLong.addEventListener(`click`, () => {
+        selectedShip = `4`;
+        console.log(selectedShip);
+    }); 
+    threeLong1.addEventListener(`click`, () => {
+        selectedShip = `3-1`;
+        console.log(selectedShip);
+    }); 
+    threeLong2.addEventListener(`click`, () => {
+        selectedShip = `3-2`;
+        console.log(selectedShip);
+    }); 
+    twoLong.addEventListener(`click`, () => {
+        selectedShip = `2`;
+        console.log(selectedShip);
+    }); 
+}
 
-fiveLong.addEventListener(`click`, () => {
-    selectedShip = `5`
-}); 
+
+MF2.addEventListener(`mouseover`, () => {
+    if(true){
+        const addClass = [];
+        addClass.push(MH2, MG2, MF2, ME2, MD2)
+        // console.log(addClass);
+        for (element of addClass){
+            element.classList.add(`hover`)
+        }
+    }
+    
+    MF2.addEventListener(`mouseleave`, () => {
+        const addClass = [];
+        addClass.push(MH2, MG2, MF2, ME2, MD2)
+        for (element of addClass){
+            element.classList.remove(`hover`)
+        }
+    })
+})
+
+// Boats for Preset ONE
+
+// 5 long boat
+OC3.classList.add(`boat`)
+OD3.classList.add(`boat`)
+OE3.classList.add(`boat`)
+OF3.classList.add(`boat`)
+OG3.classList.add(`boat`)
+
+// 4 long boat
+OI8.classList.add(`boat`)
+OI7.classList.add(`boat`)
+OI6.classList.add(`boat`)
+OI5.classList.add(`boat`)
+
+// 3 long boat
+OB6.classList.add(`boat`)
+OC6.classList.add(`boat`)
+OD6.classList.add(`boat`)
+
+// 3 long boat
+OD9.classList.add(`boat`)
+OE9.classList.add(`boat`)
+OF9.classList.add(`boat`)
+
+// 2 long boat
+OF5.classList.add(`boat`)
+OF6.classList.add(`boat`)
+
