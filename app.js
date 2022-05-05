@@ -231,13 +231,16 @@ MA1.addEventListener(`click`, () => {
 }); 
 
 // Selecting the ships for choosing locations
+let selectedShip;
 
-const fiveLong = document.querySelector(`#5L`);
-const fourLong = document.querySelector(`#4L`);
-const threeLong1 = document.querySelector(`3L-1`);
-const threeLong2 = document.querySelector(`3L-2`);
-const twoLong = document.querySelector(`2L`);
+const fiveLong = document.querySelector(`#five-long`);
+const fourLong = document.querySelector(`#four-long`);
+const threeLong1 = document.querySelector(`#three-long`);
+const threeLong2 = document.querySelector(`#three-long-two`);
+const twoLong = document.querySelector(`#two-long`);
+
+
 
 fiveLong.addEventListener(`click`, () => {
-    alert(`5 Long`)
+    selectedShip = `5`
 }); 
