@@ -259,23 +259,23 @@ console.log(everyMySquare);
     });
 
 // Check for Winning Conditions 
-function winCheck(hit) {
-    let count = 0;
-    for (squares of mySquares) {
-        for (location of squares) {
-            if (location.classList == `hit-boat`) {
-                count++;
-            } 
-        }
-    }
-    if (count === 17) {
-        if (hitter == `Self`) {
-            alert(`YOU WIN!`);
-        } else {
-            alert(`YOU LOSE!`);
-        }
-    }
-}
+// function winCheck(hit) {
+//     let count = 0;
+//     for (squares of mySquares) {
+//         for (location of squares) {
+//             if (location.classList == `hit-boat`) {
+//                 count++;
+//             } 
+//         }
+//     }
+//     if (count === 17) {
+//         if (hitter == `Self`) {
+//             alert(`YOU WIN!`);
+//         } else {
+//             alert(`YOU LOSE!`);
+//         }
+//     }
+// }
 
 
 function attack(place) {
