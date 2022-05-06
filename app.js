@@ -276,8 +276,6 @@ function randomizePlacement(possess) {
 } 
 
 // Selecting the ships for choosing locations
-
-
 {
     let selectedShip;
     const fiveLong = document.querySelector(`#five-long`);
@@ -305,28 +303,28 @@ function randomizePlacement(possess) {
     twoLong.addEventListener(`click`, () => {
         selectedShip = `2`;
         console.log(selectedShip);
-    }); 
+    });
+    
+    MF2.addEventListener(`mouseover`, () => {
+        if(true){
+            const addClass = [];
+            addClass.push(MH2, MG2, MF2, ME2, MD2)
+            // console.log(addClass);
+            for (element of addClass){
+                element.classList.add(`hover`)
+            }
+        }
+        
+        MF2.addEventListener(`mouseleave`, () => {
+            const addClass = [];
+            addClass.push(MH2, MG2, MF2, ME2, MD2)
+            for (element of addClass){
+                element.classList.remove(`hover`)
+            }
+        })
+    })
 }
 
-
-MF2.addEventListener(`mouseover`, () => {
-    if(true){
-        const addClass = [];
-        addClass.push(MH2, MG2, MF2, ME2, MD2)
-        // console.log(addClass);
-        for (element of addClass){
-            element.classList.add(`hover`)
-        }
-    }
-    
-    MF2.addEventListener(`mouseleave`, () => {
-        const addClass = [];
-        addClass.push(MH2, MG2, MF2, ME2, MD2)
-        for (element of addClass){
-            element.classList.remove(`hover`)
-        }
-    })
-})
 
 // Boats for Preset ONE
 
