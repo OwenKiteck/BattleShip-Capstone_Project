@@ -256,21 +256,37 @@ const mySquares = [mySquaresA, mySquaresB, mySquaresC, mySquaresD, mySquaresE, m
     });
 
 // Check for Winning Conditions 
-function winCheck() {
-    for (squares of mySquares) {
-        console.log(`j`);
-    } 
-}
+// function winCheck(hit) {
+//     let count = 0;
+//     for (squares of mySquares) {
+//         for (location of squares) {
+//             if (location.classList == `hit-boat`) {
+//                 count++;
+//             } 
+//         }
+//     }
+//     if (count === 17) {
+//         if (hitter == `Self`) {
+//             alert(`YOU WIN!`);
+//         } else {
+//             alert(`YOU LOSE!`);
+//         }
+//     }
+// }
 
 function attack(place) {
+    // const hitter;
     if (place.classList == `hit-boat` || place.classList == `miss-boat`) {
         return;
     } else if (place.classList == `my-boat` || place.classList == `opp-boat`) {
+        // if (place.classList == `opp-boat`) {
+        //     hitter = `Self`;
+        // }
         place.classList.remove(`opp-boat`);
         place.classList.remove(`my-boat`);
         place.classList.add(`hit-boat`);
         // alert(`HIT!`);
-        // winCheck();
+        // winCheck(hitter);
     } else {
         place.classList.remove(`opp-boat`);
         place.classList.remove(`my-boat`);
