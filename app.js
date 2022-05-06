@@ -255,22 +255,37 @@ const mySquares = [mySquaresA, mySquaresB, mySquaresC, mySquaresD, mySquaresE, m
         alert(`Your A1`)
     });
 
-// Functions for ship placements
-function randomLocation(length) {
-    
+// Check for Winning Conditions 
+function winCheck() {
+    for (squares of mySquares) {
+        console.log(`j`);
+    } 
 }
 
-function placeShip(length, location) {
-    
+function attack(place) {
+    if (place.classList == `hit-boat` || place.classList == `miss-boat`) {
+        return;
+    } else if (place.classList == `my-boat` || place.classList == `opp-boat`) {
+        place.classList.remove(`opp-boat`);
+        place.classList.remove(`my-boat`);
+        place.classList.add(`hit-boat`);
+        // alert(`HIT!`);
+        // winCheck();
+    } else {
+        place.classList.remove(`opp-boat`);
+        place.classList.remove(`my-boat`);
+        place.classList.add(`miss-boat`);
+        // alert(`MISS!`);
+    }
+
 }
 
-function randomizePlacement(possess) {
-    placeShip(5, randomLocation(5));
-    placeShip(4, randomLocation(4));
-    placeShip(3, randomLocation(3));
-    placeShip(3, randomLocation(3));
-    placeShip(2, randomLocation(2));
-} 
+function randomAttack() {
+    const randomHori = Math.floor(Math.random() * 10);
+    const randomVert = Math.floor(Math.random() * 10);
+    const location = mySquares[randomHori][randomVert];
+    attack(location);
+}
 
 // Selecting the ships for choosing locations
 {
@@ -280,7 +295,7 @@ function randomizePlacement(possess) {
     // const threeLong1 = document.querySelector(`#three-long`);
     // const threeLong2 = document.querySelector(`#three-long-two`);
     // const twoLong = document.querySelector(`#two-long`);
-    
+
     // // Selecting the ship you want to place
     // fiveLong.addEventListener(`click`, () => {
     //     selectedShip = `5`;
@@ -325,47 +340,142 @@ function randomizePlacement(possess) {
 
 
 // PRESET ONE
-// 5 long boat
-const presetOne = [
+// Opponent
+const presetOneOpponent = [
     OC3, OD3, OE3, OF3, OG3, 
     OI8, OI7, OI6, OI5,
     OB6, OC6, OD6,
     OD9, OE9, OF9,
     OF5, OF6
 ];
-for (square of presetOne){
-    square.classList.add(`boat`)
-    console.log(`boat added to ${square}`);
+for (square of presetOneOpponent){
+    square.classList.add(`opp-boat`)
 }
-// OC3.classList.add(`boat`)
-// OD3.classList.add(`boat`)
-// OE3.classList.add(`boat`)
-// OF3.classList.add(`boat`)
-// OG3.classList.add(`boat`)
-
-// // 4 long boat
-// OI8.classList.add(`boat`)
-// OI7.classList.add(`boat`)
-// OI6.classList.add(`boat`)
-// OI5.classList.add(`boat`)
-
-// // 3 long boat
-// OB6.classList.add(`boat`)
-// OC6.classList.add(`boat`)
-// OD6.classList.add(`boat`)
-
-// // 3 long boat
-// OD9.classList.add(`boat`)
-// OE9.classList.add(`boat`)
-// OF9.classList.add(`boat`)
-
-// // 2 long boat
-// OF5.classList.add(`boat`)
-// OF6.classList.add(`boat`)
+// Your board
+const presetOneMine = [
+    MI8, MI7, MI6, MI5, MI4, 
+    MB2, MB3, MB4, MB5,
+    MH2, MG2, MF2,
+    ME9, MF9, MG9,
+    ME5, MD5
+];
+for (square of presetOneMine){
+    square.classList.add(`my-boat`)
+}
 
 // Check it boat class is applied
-OC3.addEventListener(`click`, () => {
-    if(OC3.classList == `boat`){
-        alert(`yup`)
-    }
-}); 
+// OC3.addEventListener(`click`, () => {
+//     if(OC3.classList == `opp-boat`){
+//         alert(`HIT!`)
+//     }
+// }); 
+
+OA1.addEventListener(`click`, () => { attack(OA1); randomAttack() })
+OA2.addEventListener(`click`, () => { attack(OA2); randomAttack() })
+OA3.addEventListener(`click`, () => { attack(OA3); randomAttack() })
+OA4.addEventListener(`click`, () => { attack(OA4); randomAttack() })
+OA5.addEventListener(`click`, () => { attack(OA5); randomAttack() })
+OA6.addEventListener(`click`, () => { attack(OA6); randomAttack() })
+OA7.addEventListener(`click`, () => { attack(OA7); randomAttack() })
+OA8.addEventListener(`click`, () => { attack(OA8); randomAttack() })
+OA9.addEventListener(`click`, () => { attack(OA9); randomAttack() })
+OA0.addEventListener(`click`, () => { attack(OA0); randomAttack() })
+
+OB1.addEventListener(`click`, () => { attack(OB1); randomAttack() })
+OB2.addEventListener(`click`, () => { attack(OB2); randomAttack() })
+OB3.addEventListener(`click`, () => { attack(OB3); randomAttack() })
+OB4.addEventListener(`click`, () => { attack(OB4); randomAttack() })
+OB5.addEventListener(`click`, () => { attack(OB5); randomAttack() })
+OB6.addEventListener(`click`, () => { attack(OB6); randomAttack() })
+OB7.addEventListener(`click`, () => { attack(OB7); randomAttack() })
+OB8.addEventListener(`click`, () => { attack(OB8); randomAttack() })
+OB9.addEventListener(`click`, () => { attack(OB9); randomAttack() })
+OB0.addEventListener(`click`, () => { attack(OB0); randomAttack() })
+
+OC1.addEventListener(`click`, () => { attack(OC1); randomAttack() })
+OC2.addEventListener(`click`, () => { attack(OC2); randomAttack() })
+OC3.addEventListener(`click`, () => { attack(OC3); randomAttack() })
+OC4.addEventListener(`click`, () => { attack(OC4); randomAttack() })
+OC5.addEventListener(`click`, () => { attack(OC5); randomAttack() })
+OC6.addEventListener(`click`, () => { attack(OC6); randomAttack() })
+OC7.addEventListener(`click`, () => { attack(OC7); randomAttack() })
+OC8.addEventListener(`click`, () => { attack(OC8); randomAttack() })
+OC9.addEventListener(`click`, () => { attack(OC9); randomAttack() })
+OC0.addEventListener(`click`, () => { attack(OC0); randomAttack() })
+
+OD1.addEventListener(`click`, () => { attack(OD1); randomAttack() })
+OD2.addEventListener(`click`, () => { attack(OD2); randomAttack() })
+OD3.addEventListener(`click`, () => { attack(OD3); randomAttack() })
+OD4.addEventListener(`click`, () => { attack(OD4); randomAttack() })
+OD5.addEventListener(`click`, () => { attack(OD5); randomAttack() })
+OD6.addEventListener(`click`, () => { attack(OD6); randomAttack() })
+OD7.addEventListener(`click`, () => { attack(OD7); randomAttack() })
+OD8.addEventListener(`click`, () => { attack(OD8); randomAttack() })
+OD9.addEventListener(`click`, () => { attack(OD9); randomAttack() })
+OD0.addEventListener(`click`, () => { attack(OD0); randomAttack() })
+
+OE1.addEventListener(`click`, () => { attack(OE1); randomAttack() })
+OE2.addEventListener(`click`, () => { attack(OE2); randomAttack() })
+OE3.addEventListener(`click`, () => { attack(OE3); randomAttack() })
+OE4.addEventListener(`click`, () => { attack(OE4); randomAttack() })
+OE5.addEventListener(`click`, () => { attack(OE5); randomAttack() })
+OE6.addEventListener(`click`, () => { attack(OE6); randomAttack() })
+OE7.addEventListener(`click`, () => { attack(OE7); randomAttack() })
+OE8.addEventListener(`click`, () => { attack(OE8); randomAttack() })
+OE9.addEventListener(`click`, () => { attack(OE9); randomAttack() })
+OE0.addEventListener(`click`, () => { attack(OE0); randomAttack() })
+
+OF1.addEventListener(`click`, () => { attack(OF1); randomAttack() })
+OF2.addEventListener(`click`, () => { attack(OF2); randomAttack() })
+OF3.addEventListener(`click`, () => { attack(OF3); randomAttack() })
+OF4.addEventListener(`click`, () => { attack(OF4); randomAttack() })
+OF5.addEventListener(`click`, () => { attack(OF5); randomAttack() })
+OF6.addEventListener(`click`, () => { attack(OF6); randomAttack() })
+OF7.addEventListener(`click`, () => { attack(OF7); randomAttack() })
+OF8.addEventListener(`click`, () => { attack(OF8); randomAttack() })
+OF9.addEventListener(`click`, () => { attack(OF9); randomAttack() })
+OF0.addEventListener(`click`, () => { attack(OF0); randomAttack() })
+
+OG1.addEventListener(`click`, () => { attack(OG1); randomAttack() })
+OG2.addEventListener(`click`, () => { attack(OG2); randomAttack() })
+OG3.addEventListener(`click`, () => { attack(OG3); randomAttack() })
+OG4.addEventListener(`click`, () => { attack(OG4); randomAttack() })
+OG5.addEventListener(`click`, () => { attack(OG5); randomAttack() })
+OG6.addEventListener(`click`, () => { attack(OG6); randomAttack() })
+OG7.addEventListener(`click`, () => { attack(OG7); randomAttack() })
+OG8.addEventListener(`click`, () => { attack(OG8); randomAttack() })
+OG9.addEventListener(`click`, () => { attack(OG9); randomAttack() })
+OG0.addEventListener(`click`, () => { attack(OG0); randomAttack() })
+
+OH1.addEventListener(`click`, () => { attack(OH1); randomAttack() })
+OH2.addEventListener(`click`, () => { attack(OH2); randomAttack() })
+OH3.addEventListener(`click`, () => { attack(OH3); randomAttack() })
+OH4.addEventListener(`click`, () => { attack(OH4); randomAttack() })
+OH5.addEventListener(`click`, () => { attack(OH5); randomAttack() })
+OH6.addEventListener(`click`, () => { attack(OH6); randomAttack() })
+OH7.addEventListener(`click`, () => { attack(OH7); randomAttack() })
+OH8.addEventListener(`click`, () => { attack(OH8); randomAttack() })
+OH9.addEventListener(`click`, () => { attack(OH9); randomAttack() })
+OH0.addEventListener(`click`, () => { attack(OH0); randomAttack() })
+
+OI1.addEventListener(`click`, () => { attack(OI1); randomAttack() })
+OI2.addEventListener(`click`, () => { attack(OI2); randomAttack() })
+OI3.addEventListener(`click`, () => { attack(OI3); randomAttack() })
+OI4.addEventListener(`click`, () => { attack(OI4); randomAttack() })
+OI5.addEventListener(`click`, () => { attack(OI5); randomAttack() })
+OI6.addEventListener(`click`, () => { attack(OI6); randomAttack() })
+OI7.addEventListener(`click`, () => { attack(OI7); randomAttack() })
+OI8.addEventListener(`click`, () => { attack(OI8); randomAttack() })
+OI9.addEventListener(`click`, () => { attack(OI9); randomAttack() })
+OI0.addEventListener(`click`, () => { attack(OI0); randomAttack() })
+
+OJ1.addEventListener(`click`, () => { attack(OJ1); randomAttack() })
+OJ2.addEventListener(`click`, () => { attack(OJ2); randomAttack() })
+OJ3.addEventListener(`click`, () => { attack(OJ3); randomAttack() })
+OJ4.addEventListener(`click`, () => { attack(OJ4); randomAttack() })
+OJ5.addEventListener(`click`, () => { attack(OJ5); randomAttack() })
+OJ6.addEventListener(`click`, () => { attack(OJ6); randomAttack() })
+OJ7.addEventListener(`click`, () => { attack(OJ7); randomAttack() })
+OJ8.addEventListener(`click`, () => { attack(OJ8); randomAttack() })
+OJ9.addEventListener(`click`, () => { attack(OJ9); randomAttack() })
+OJ0.addEventListener(`click`, () => { attack(OJ0); randomAttack() })

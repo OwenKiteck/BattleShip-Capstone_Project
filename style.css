@@ -53,6 +53,16 @@ tr {
 }
 
 /* This is an identification class that helps with JavaScript */
-.boat {
-    background-color: rgb(139, 126, 126);
+.opp-boat {
+    /* background-color: rgb(139, 194, 194); */
+}
+.my-boat {
+    background-color: rgb(128, 115, 115);
+}
+
+.hit-boat {
+    background-color: rgb(230, 42, 67)
+}
+.miss-boat {
+    background-color: rgb(255, 255, 255)
 }
