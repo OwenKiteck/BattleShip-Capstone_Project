@@ -247,16 +247,13 @@ const mySquaresJ = [MJ1, MJ2, MJ3, MJ4, MJ5, MJ6, MJ7, MJ8, MJ9, MJ0];
 const mySquares = [mySquaresA, mySquaresB, mySquaresC, mySquaresD, mySquaresE, mySquaresF, mySquaresG, mySquaresH, mySquaresI, mySquaresJ];
 
 
-
-
-OC3.addEventListener(`click`, () => {
-    if(OC3.classList == `boat`){
-        alert(`yup`)
-    }
-}); 
-MA1.addEventListener(`click`, () => {
-    alert(`Your A1`)
-});
+// Checking the selectors work
+    OA1.addEventListener(`click`, () => {
+        alert(`Opponent's A1`)
+    });
+    MA1.addEventListener(`click`, () => {
+        alert(`Your A1`)
+    });
 
 // Functions for ship placements
 function randomLocation(length) {
@@ -278,32 +275,33 @@ function randomizePlacement(possess) {
 // Selecting the ships for choosing locations
 {
     let selectedShip;
-    const fiveLong = document.querySelector(`#five-long`);
-    const fourLong = document.querySelector(`#four-long`);
-    const threeLong1 = document.querySelector(`#three-long`);
-    const threeLong2 = document.querySelector(`#three-long-two`);
-    const twoLong = document.querySelector(`#two-long`);
-    // Selecting the ship you want to place
-    fiveLong.addEventListener(`click`, () => {
-        selectedShip = `5`;
-        console.log(selectedShip);
-    }); 
-    fourLong.addEventListener(`click`, () => {
-        selectedShip = `4`;
-        console.log(selectedShip);
-    }); 
-    threeLong1.addEventListener(`click`, () => {
-        selectedShip = `3-1`;
-        console.log(selectedShip);
-    }); 
-    threeLong2.addEventListener(`click`, () => {
-        selectedShip = `3-2`;
-        console.log(selectedShip);
-    }); 
-    twoLong.addEventListener(`click`, () => {
-        selectedShip = `2`;
-        console.log(selectedShip);
-    });
+    // const fiveLong = document.querySelector(`#five-long`);
+    // const fourLong = document.querySelector(`#four-long`);
+    // const threeLong1 = document.querySelector(`#three-long`);
+    // const threeLong2 = document.querySelector(`#three-long-two`);
+    // const twoLong = document.querySelector(`#two-long`);
+    
+    // // Selecting the ship you want to place
+    // fiveLong.addEventListener(`click`, () => {
+    //     selectedShip = `5`;
+    //     console.log(selectedShip);
+    // }); 
+    // fourLong.addEventListener(`click`, () => {
+    //     selectedShip = `4`;
+    //     console.log(selectedShip);
+    // }); 
+    // threeLong1.addEventListener(`click`, () => {
+    //     selectedShip = `3-1`;
+    //     console.log(selectedShip);
+    // }); 
+    // threeLong2.addEventListener(`click`, () => {
+    //     selectedShip = `3-2`;
+    //     console.log(selectedShip);
+    // }); 
+    // twoLong.addEventListener(`click`, () => {
+    //     selectedShip = `2`;
+    //     console.log(selectedShip);
+    // });
     
     MF2.addEventListener(`mouseover`, () => {
         if(true){
@@ -326,32 +324,48 @@ function randomizePlacement(possess) {
 }
 
 
-// Boats for Preset ONE
-
+// PRESET ONE
 // 5 long boat
-OC3.classList.add(`boat`)
-OD3.classList.add(`boat`)
-OE3.classList.add(`boat`)
-OF3.classList.add(`boat`)
-OG3.classList.add(`boat`)
+const presetOne = [
+    OC3, OD3, OE3, OF3, OG3, 
+    OI8, OI7, OI6, OI5,
+    OB6, OC6, OD6,
+    OD9, OE9, OF9,
+    OF5, OF6
+];
+for (square of presetOne){
+    square.classList.add(`boat`)
+    console.log(`boat added to ${square}`);
+}
+// OC3.classList.add(`boat`)
+// OD3.classList.add(`boat`)
+// OE3.classList.add(`boat`)
+// OF3.classList.add(`boat`)
+// OG3.classList.add(`boat`)
 
-// 4 long boat
-OI8.classList.add(`boat`)
-OI7.classList.add(`boat`)
-OI6.classList.add(`boat`)
-OI5.classList.add(`boat`)
+// // 4 long boat
+// OI8.classList.add(`boat`)
+// OI7.classList.add(`boat`)
+// OI6.classList.add(`boat`)
+// OI5.classList.add(`boat`)
 
-// 3 long boat
-OB6.classList.add(`boat`)
-OC6.classList.add(`boat`)
-OD6.classList.add(`boat`)
+// // 3 long boat
+// OB6.classList.add(`boat`)
+// OC6.classList.add(`boat`)
+// OD6.classList.add(`boat`)
 
-// 3 long boat
-OD9.classList.add(`boat`)
-OE9.classList.add(`boat`)
-OF9.classList.add(`boat`)
+// // 3 long boat
+// OD9.classList.add(`boat`)
+// OE9.classList.add(`boat`)
+// OF9.classList.add(`boat`)
 
-// 2 long boat
-OF5.classList.add(`boat`)
-OF6.classList.add(`boat`)
+// // 2 long boat
+// OF5.classList.add(`boat`)
+// OF6.classList.add(`boat`)
 
+// Check it boat class is applied
+OC3.addEventListener(`click`, () => {
+    if(OC3.classList == `boat`){
+        alert(`yup`)
+    }
+}); 
