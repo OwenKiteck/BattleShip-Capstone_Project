@@ -54,7 +54,7 @@ tr {
 
 /* This is an identification class that helps with JavaScript */
 .opp-boat {
-    /* background-color: rgb(139, 194, 194); */
+    background-color: rgb(139, 194, 194);
 }
 .my-boat {
     background-color: rgb(128, 115, 115);
@@ -65,4 +65,20 @@ tr {
 }
 .miss-boat {
     background-color: rgb(255, 255, 255)
+}
+
+#buttons {
+    /* text-align: center; */
+    display: flex;
+    justify-content: space-around;
+    margin: 0 25%;
+}
+button {
+    font-family: 'Koulen', cursive;
+    background-color: white;
+    border: 8px solid rgb(23, 23, 68);
+    border-radius: 10px;
+    width: 120px;
+    height: 65px;
+    font-size: 20px;
 }

@@ -121,6 +121,7 @@ const opponentSquaresH = [OH1, OH2, OH3, OH4, OH5, OH6, OH7, OH8, OH9, OH0];
 const opponentSquaresI = [OI1, OI2, OI3, OI4, OI5, OI6, OI7, OI8, OI9, OI0];
 const opponentSquaresJ = [OJ1, OJ2, OJ3, OJ4, OJ5, OJ6, OJ7, OJ8, OJ9, OJ0];
 const opponentSquares = [opponentSquaresA, opponentSquaresB, opponentSquaresC, opponentSquaresD, opponentSquaresE, opponentSquaresF, opponentSquaresG, opponentSquaresH, opponentSquaresI, opponentSquaresJ];
+const everyOppSquare = [...opponentSquaresA, ...opponentSquaresB, ...opponentSquaresC, ...opponentSquaresD, ...opponentSquaresE, ...opponentSquaresF, ...opponentSquaresG, ...opponentSquaresH, ...opponentSquaresI, ...opponentSquaresJ];
 
 // Selectors for each square in your table
 
@@ -245,6 +246,8 @@ const mySquaresH = [MH1, MH2, MH3, MH4, MH5, MH6, MH7, MH8, MH9, MH0];
 const mySquaresI = [MI1, MI2, MI3, MI4, MI5, MI6, MI7, MI8, MI9, MI0];
 const mySquaresJ = [MJ1, MJ2, MJ3, MJ4, MJ5, MJ6, MJ7, MJ8, MJ9, MJ0];
 const mySquares = [mySquaresA, mySquaresB, mySquaresC, mySquaresD, mySquaresE, mySquaresF, mySquaresG, mySquaresH, mySquaresI, mySquaresJ];
+const everyMySquare = [...mySquaresA, ...mySquaresB, ...mySquaresC, ...mySquaresD, ...mySquaresE, ...mySquaresF, ...mySquaresG, ...mySquaresH, ...mySquaresI, ...mySquaresJ];
+console.log(everyMySquare);
 
 
 // Checking the selectors work
@@ -256,11 +259,24 @@ const mySquares = [mySquaresA, mySquaresB, mySquaresC, mySquaresD, mySquaresE, m
     });
 
 // Check for Winning Conditions 
-function winCheck() {
+function winCheck(hit) {
+    let count = 0;
     for (squares of mySquares) {
-        console.log(`j`);
-    } 
+        for (location of squares) {
+            if (location.classList == `hit-boat`) {
+                count++;
+            } 
+        }
+    }
+    if (count === 17) {
+        if (hitter == `Self`) {
+            alert(`YOU WIN!`);
+        } else {
+            alert(`YOU LOSE!`);
+        }
+    }
 }
+
 
 function attack(place) {
     if (place.classList == `hit-boat` || place.classList == `miss-boat`) {
@@ -341,27 +357,77 @@ function randomAttack() {
 
 // PRESET ONE
 // Opponent
-const presetOneOpponent = [
-    OC3, OD3, OE3, OF3, OG3, 
-    OI8, OI7, OI6, OI5,
-    OB6, OC6, OD6,
-    OD9, OE9, OF9,
-    OF5, OF6
-];
-for (square of presetOneOpponent){
-    square.classList.add(`opp-boat`)
-}
-// Your board
-const presetOneMine = [
-    MI8, MI7, MI6, MI5, MI4, 
-    MB2, MB3, MB4, MB5,
-    MH2, MG2, MF2,
-    ME9, MF9, MG9,
-    ME5, MD5
-];
-for (square of presetOneMine){
-    square.classList.add(`my-boat`)
-}
+
+let preset = 1;
+
+const buttonOne = document.querySelector(`#p-one`)
+const buttonTwo = document.querySelector(`#p-two`)
+const buttonThree = document.querySelector(`#p-three`)
+
+// Preset One
+buttonOne.addEventListener(`click`, () => {
+    for (square of everyOppSquare){
+        square.classList.remove(`opp-boat`)
+    }
+    for (square of everyMySquare){
+        square.classList.remove(`my-boat`)
+    }
+    // Opponent
+    const presetOneOpponent = [
+        OC3, OD3, OE3, OF3, OG3, 
+        OI8, OI7, OI6, OI5,
+        OB6, OC6, OD6,
+        OD9, OE9, OF9,
+        OF5, OF6
+    ];
+    for (square of presetOneOpponent){
+        square.classList.add(`opp-boat`)
+    }
+    // Your board
+    const presetOneMine = [
+        MI8, MI7, MI6, MI5, MI4, 
+        MB2, MB3, MB4, MB5,
+        MH2, MG2, MF2,
+        ME9, MF9, MG9,
+        ME5, MD5
+    ];
+    for (square of presetOneMine){
+        square.classList.add(`my-boat`)
+    }
+})
+
+// Preset Two
+buttonTwo.addEventListener(`click`, () => {
+    for (square of everyOppSquare){
+        square.classList.remove(`opp-boat`)
+    }
+    for (square of everyMySquare){
+        square.classList.remove(`my-boat`)
+    }
+    // Opponent
+    const presetOneOpponent = [
+        OI8, OI7, OI6, OI5, OI4, 
+        OB2, OB3, OB4, OB5,
+        OH2, OG2, OF2,
+        OE9, OF9, OG9,
+        OE5, OD5
+    ];
+    for (square of presetOneOpponent){
+        square.classList.add(`opp-boat`)
+    }
+    // Your board
+    const presetOneMine = [
+        MC9, MC8, MC7, MC6, MC5, 
+        MI4, MH4, MG4, MF4,
+        ME2, MG2, MF2,
+        ME9, MF9, MG9,
+        MI6, MI7
+    ];
+    for (square of presetOneMine){
+        square.classList.add(`my-boat`)
+    }
+})
+
 
 // Check it boat class is applied
 // OC3.addEventListener(`click`, () => {
