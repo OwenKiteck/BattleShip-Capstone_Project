@@ -428,6 +428,38 @@ buttonTwo.addEventListener(`click`, () => {
     }
 })
 
+// Preset 3
+buttonThree.addEventListener(`click`, () => {
+    for (square of everyOppSquare){
+        square.classList.remove(`opp-boat`)
+    }
+    for (square of everyMySquare){
+        square.classList.remove(`my-boat`)
+    }
+    // Opponent
+    const presetOneOpponent = [
+        OB4, OB8, OB7, OB6, OB5, 
+        OI3, OI4, OI5, OI6,
+        OE2, OD2, OC2,
+        OE5, OF5, OG5,
+        OE9, OE8
+    ];
+    for (square of presetOneOpponent){
+        square.classList.add(`opp-boat`)
+    }
+    // Your board
+    const presetOneMine = [
+        MI7, MH7, MG7, MF7, ME7, 
+        MI3, MI4, MI5, MI2,
+        ME2, MD2, MC2,
+        ME5, MF5, MG5,
+        MC7, MC8
+    ];
+    for (square of presetOneMine){
+        square.classList.add(`my-boat`)
+    }
+})
+
 
 // Check it boat class is applied
 // OC3.addEventListener(`click`, () => {
