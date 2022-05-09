@@ -112,6 +112,10 @@ button:active {
     background-color: rgb(255, 255, 255);
 }
 
+.larger:active {
+    font-size: 29px;
+}
+
 .larger {
     font-size: 30px;
 }
