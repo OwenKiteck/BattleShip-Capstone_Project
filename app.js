@@ -251,49 +251,52 @@ console.log(everyMySquare);
 
 
 // Checking the selectors work
-    OA1.addEventListener(`click`, () => {
-        alert(`Opponent's A1`)
-    });
-    MA1.addEventListener(`click`, () => {
-        alert(`Your A1`)
-    });
+OA1.addEventListener(`click`, () => {
+    alert(`Opponent's A1`)
+});
+MA1.addEventListener(`click`, () => {
+    alert(`Your A1`)
+});
+
+let enemyHits = 0;
+let myHits = 0;
+const winLoseSection = document.querySelector(`#win-lose`)
+const youWin = document.createElement(`h1`)
+youWin.innerText = `YOU WIN!`;
+const youLose = document.createElement(`h1`)
+youLose.innerText = `YOU LOSE`;
+
 
 // Check for Winning Conditions 
-// function winCheck(hit) {
-//     let count = 0;
-//     for (squares of mySquares) {
-//         for (location of squares) {
-//             if (location.classList == `hit-boat`) {
-//                 count++;
-//             } 
-//         }
-//     }
-//     if (count === 17) {
-//         if (hitter == `Self`) {
-//             alert(`YOU WIN!`);
-//         } else {
-//             alert(`YOU LOSE!`);
-//         }
-//     }
-// }
-
+function winLoseCheck() {
+    if (enemyHits === 17){
+        // alert(`YOU LOSE!!!`);
+        winLoseSection.append(youLose)
+    } else if (myHits === 17) {
+        // alert(`YOU WIN!!!`);
+        winLoseSection.append(youWin)
+    }
+}
 
 function attack(place) {
-
 
     if (place.classList == `hit-boat` || place.classList == `miss-boat`) {
         return;
     } else if (place.classList == `my-boat` || place.classList == `opp-boat`) {
+        if (place.classList == `my-boat`){
+            enemyHits++;
+        }
+        if (place.classList == `opp-boat`){
+            myHits++;
+        }
         place.classList.remove(`opp-boat`);
         place.classList.remove(`my-boat`);
         place.classList.add(`hit-boat`);
-        // alert(`HIT!`);
-        // winCheck();
+        winLoseCheck();
     } else {
         place.classList.remove(`opp-boat`);
         place.classList.remove(`my-boat`);
         place.classList.add(`miss-boat`);
-        // alert(`MISS!`);
     }
 
 }
@@ -310,7 +313,7 @@ let originalDifficulty = difficulty;
 rooky.addEventListener(`click`, () => {
     difficulty = 1;
     originalDifficulty = difficulty;
-    for(item of difficultyArray){
+    for (item of difficultyArray) {
         item.classList.remove(`selected`)
     }
     rooky.classList.add(`selected`)
@@ -318,7 +321,7 @@ rooky.addEventListener(`click`, () => {
 soldier.addEventListener(`click`, () => {
     difficulty = 2;
     originalDifficulty = difficulty;
-    for(item of difficultyArray){
+    for (item of difficultyArray) {
         item.classList.remove(`selected`)
     }
     soldier.classList.add(`selected`)
@@ -326,7 +329,7 @@ soldier.addEventListener(`click`, () => {
 general.addEventListener(`click`, () => {
     difficulty = 3;
     originalDifficulty = difficulty;
-    for(item of difficultyArray){
+    for (item of difficultyArray) {
         item.classList.remove(`selected`)
     }
     general.classList.add(`selected`)
@@ -334,7 +337,7 @@ general.addEventListener(`click`, () => {
 master.addEventListener(`click`, () => {
     difficulty = 5;
     originalDifficulty = difficulty;
-    for(item of difficultyArray){
+    for (item of difficultyArray) {
         item.classList.remove(`selected`)
     }
     master.classList.add(`selected`)
@@ -342,7 +345,7 @@ master.addEventListener(`click`, () => {
 
 function randomAttack() {
 
-    while(difficulty > 0){
+    while (difficulty > 0) {
         const randomHori = Math.floor(Math.random() * 10);
         const randomVert = Math.floor(Math.random() * 10);
         const location = mySquares[randomHori][randomVert];
@@ -383,21 +386,21 @@ function randomAttack() {
     //     selectedShip = `2`;
     //     console.log(selectedShip);
     // });
-    
+
     MF2.addEventListener(`mouseover`, () => {
-        if(true){
+        if (true) {
             const addClass = [];
             addClass.push(MH2, MG2, MF2, ME2, MD2)
             // console.log(addClass);
-            for (element of addClass){
+            for (element of addClass) {
                 element.classList.add(`hover`)
             }
         }
-        
+
         MF2.addEventListener(`mouseleave`, () => {
             const addClass = [];
             addClass.push(MH2, MG2, MF2, ME2, MD2)
-            for (element of addClass){
+            for (element of addClass) {
                 element.classList.remove(`hover`)
             }
         })
@@ -413,117 +416,155 @@ let preset = 1;
 const buttonOne = document.querySelector(`#p-one`)
 const buttonTwo = document.querySelector(`#p-two`)
 const buttonThree = document.querySelector(`#p-three`)
-const buttonArray = [buttonOne, buttonTwo, buttonThree]
+const buttonFour = document.querySelector(`#p-four`)
+const buttonArray = [buttonOne, buttonTwo, buttonThree, buttonFour]
 
 // Preset One
 buttonOne.addEventListener(`click`, () => {
-    for(item of buttonArray){
+    for (item of buttonArray) {
         item.classList.remove(`selected`)
     }
     buttonOne.classList.add(`selected`)
 
-    for (square of everyOppSquare){
+    for (square of everyOppSquare) {
         square.classList.remove(`opp-boat`)
     }
-    for (square of everyMySquare){
+    for (square of everyMySquare) {
         square.classList.remove(`my-boat`)
     }
     // Opponent
     const presetOneOpponent = [
-        OC3, OD3, OE3, OF3, OG3, 
+        OC3, OD3, OE3, OF3, OG3,
         OI8, OI7, OI6, OI5,
         OB6, OC6, OD6,
         OD9, OE9, OF9,
         OF5, OF6
     ];
-    for (square of presetOneOpponent){
+    for (square of presetOneOpponent) {
         square.classList.add(`opp-boat`)
     }
     // Your board
     const presetOneMine = [
-        MI8, MI7, MI6, MI5, MI4, 
+        MI8, MI7, MI6, MI5, MI4,
         MB2, MB3, MB4, MB5,
         MH2, MG2, MF2,
         ME9, MF9, MG9,
         ME5, MD5
     ];
-    for (square of presetOneMine){
+    for (square of presetOneMine) {
         square.classList.add(`my-boat`)
     }
 })
 
 // Preset Two
 buttonTwo.addEventListener(`click`, () => {
-    for(item of buttonArray){
+    for (item of buttonArray) {
         item.classList.remove(`selected`)
     }
     buttonTwo.classList.add(`selected`)
 
-    for (square of everyOppSquare){
+    for (square of everyOppSquare) {
         square.classList.remove(`opp-boat`)
     }
-    for (square of everyMySquare){
+    for (square of everyMySquare) {
         square.classList.remove(`my-boat`)
     }
     // Opponent
     const presetOneOpponent = [
-        OI8, OI7, OI6, OI5, OI4, 
+        OI8, OI7, OI6, OI5, OI4,
         OB2, OB3, OB4, OB5,
         OH2, OG2, OF2,
         OE9, OF9, OG9,
         OE5, OD5
     ];
-    for (square of presetOneOpponent){
+    for (square of presetOneOpponent) {
         square.classList.add(`opp-boat`)
     }
     // Your board
     const presetOneMine = [
-        MC9, MC8, MC7, MC6, MC5, 
+        MC9, MC8, MC7, MC6, MC5,
         MI4, MH4, MG4, MF4,
         ME2, MG2, MF2,
         ME9, MF9, MG9,
         MI6, MI7
     ];
-    for (square of presetOneMine){
+    for (square of presetOneMine) {
         square.classList.add(`my-boat`)
     }
 })
 
 // Preset 3
 buttonThree.addEventListener(`click`, () => {
-    for(item of buttonArray){
+    for (item of buttonArray) {
         item.classList.remove(`selected`)
     }
     buttonThree.classList.add(`selected`)
 
-    for (square of everyOppSquare){
+    for (square of everyOppSquare) {
         square.classList.remove(`opp-boat`)
     }
-    for (square of everyMySquare){
+    for (square of everyMySquare) {
         square.classList.remove(`my-boat`)
     }
     // Opponent
     const presetOneOpponent = [
-        OB4, OB8, OB7, OB6, OB5, 
+        OB4, OB8, OB7, OB6, OB5,
         OI3, OI4, OI5, OI6,
         OE2, OD2, OC2,
         OE5, OF5, OG5,
         OE9, OE8
     ];
-    for (square of presetOneOpponent){
+    for (square of presetOneOpponent) {
         square.classList.add(`opp-boat`)
     }
     // Your board
     const presetOneMine = [
-        MI7, MH7, MG7, MF7, ME7, 
+        MI7, MH7, MG7, MF7, ME7,
         MI3, MI4, MI5, MI2,
         ME2, MD2, MC2,
         ME5, MF5, MG5,
         MC7, MC8
     ];
-    for (square of presetOneMine){
+    for (square of presetOneMine) {
         square.classList.add(`my-boat`)
     }
+})
+
+// Preset 3
+buttonFour.addEventListener(`click`, () => {
+for (item of buttonArray) {
+    item.classList.remove(`selected`)
+}
+buttonFour.classList.add(`selected`)
+
+for (square of everyOppSquare) {
+    square.classList.remove(`opp-boat`)
+}
+for (square of everyMySquare) {
+    square.classList.remove(`my-boat`)
+}
+// Opponent
+const presetOneOpponent = [
+    OE5, OF5, OG5, OH5, OI5,
+    OB2, OB3, OB4, OB5,
+    OH7, OH8, OH9,
+    OH2, OG2, OF2,
+    OD9, OD8
+];
+for (square of presetOneOpponent) {
+    square.classList.add(`opp-boat`)
+}
+// Your board
+const presetOneMine = [
+    MB4, MB8, MB7, MB6, MB5,
+    MI3, MI4, MI5, MI6,
+    ME2, MD2, MC2,
+    ME5, MF5, MG5,
+    ME9, ME8
+];
+for (square of presetOneMine) {
+    square.classList.add(`my-boat`)
+}
 })
 
 

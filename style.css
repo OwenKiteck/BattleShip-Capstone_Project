@@ -8,10 +8,10 @@ body {
 
 header {
     background-color: rgb(255, 255, 255);
-    border-bottom: 18px solid rgb(23, 23, 68);
-    border-right: 18px solid rgb(23, 23, 68);
-    border-top: 18px solid rgb(65, 65, 99);
-    border-left: 18px solid rgb(65, 65, 99);
+    border-bottom: 18px solid rgb(13, 13, 66);
+    border-right: 18px solid rgb(15, 15, 59);
+    border-top: 18px solid rgb(109, 109, 145);
+    border-left: 18px solid rgb(109, 109, 145);
     border-radius: 10px;
     margin: auto 10%;
     text-align: center;
@@ -62,7 +62,8 @@ tr {
 
 /* This is an identification class that helps with JavaScript */
 .opp-boat {
-    /* background-color: rgb(139, 194, 194); */
+    background-color: rgb(131, 245, 245);
+    /* background-color: rgb(127, 207, 207); */
 }
 .my-boat {
     background-color: rgb(128, 115, 115);
@@ -109,4 +110,16 @@ button:active {
     border-top: 8px solid rgb(109, 109, 145);
     border-left: 8px solid rgb(109, 109, 145);
     background-color: rgb(255, 255, 255);
+}
+
+.larger {
+    font-size: 30px;
+}
+
+/* Win/Lose message */
+h1 {
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: 80px;
+    margin: 0;
 }
