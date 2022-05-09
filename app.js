@@ -279,6 +279,8 @@ console.log(everyMySquare);
 
 
 function attack(place) {
+
+
     if (place.classList == `hit-boat` || place.classList == `miss-boat`) {
         return;
     } else if (place.classList == `my-boat` || place.classList == `opp-boat`) {
@@ -296,11 +298,59 @@ function attack(place) {
 
 }
 
+const rooky = document.querySelector(`#rooky`)
+const soldier = document.querySelector(`#soldier`)
+const general = document.querySelector(`#general`)
+const master = document.querySelector(`#master`)
+const difficultyArray = [rooky, soldier, general, master]
+
+let difficulty = 1;
+let originalDifficulty = difficulty;
+
+rooky.addEventListener(`click`, () => {
+    difficulty = 1;
+    originalDifficulty = difficulty;
+    for(item of difficultyArray){
+        item.classList.remove(`selected`)
+    }
+    rooky.classList.add(`selected`)
+})
+soldier.addEventListener(`click`, () => {
+    difficulty = 2;
+    originalDifficulty = difficulty;
+    for(item of difficultyArray){
+        item.classList.remove(`selected`)
+    }
+    soldier.classList.add(`selected`)
+})
+general.addEventListener(`click`, () => {
+    difficulty = 3;
+    originalDifficulty = difficulty;
+    for(item of difficultyArray){
+        item.classList.remove(`selected`)
+    }
+    general.classList.add(`selected`)
+})
+master.addEventListener(`click`, () => {
+    difficulty = 5;
+    originalDifficulty = difficulty;
+    for(item of difficultyArray){
+        item.classList.remove(`selected`)
+    }
+    master.classList.add(`selected`)
+})
+
 function randomAttack() {
-    const randomHori = Math.floor(Math.random() * 10);
-    const randomVert = Math.floor(Math.random() * 10);
-    const location = mySquares[randomHori][randomVert];
-    attack(location);
+
+    while(difficulty > 0){
+        const randomHori = Math.floor(Math.random() * 10);
+        const randomVert = Math.floor(Math.random() * 10);
+        const location = mySquares[randomHori][randomVert];
+        attack(location);
+        difficulty--;
+    }
+    difficulty = originalDifficulty;
+
 }
 
 // Selecting the ships for choosing locations
@@ -363,9 +413,15 @@ let preset = 1;
 const buttonOne = document.querySelector(`#p-one`)
 const buttonTwo = document.querySelector(`#p-two`)
 const buttonThree = document.querySelector(`#p-three`)
+const buttonArray = [buttonOne, buttonTwo, buttonThree]
 
 // Preset One
 buttonOne.addEventListener(`click`, () => {
+    for(item of buttonArray){
+        item.classList.remove(`selected`)
+    }
+    buttonOne.classList.add(`selected`)
+
     for (square of everyOppSquare){
         square.classList.remove(`opp-boat`)
     }
@@ -398,6 +454,11 @@ buttonOne.addEventListener(`click`, () => {
 
 // Preset Two
 buttonTwo.addEventListener(`click`, () => {
+    for(item of buttonArray){
+        item.classList.remove(`selected`)
+    }
+    buttonTwo.classList.add(`selected`)
+
     for (square of everyOppSquare){
         square.classList.remove(`opp-boat`)
     }
@@ -430,6 +491,11 @@ buttonTwo.addEventListener(`click`, () => {
 
 // Preset 3
 buttonThree.addEventListener(`click`, () => {
+    for(item of buttonArray){
+        item.classList.remove(`selected`)
+    }
+    buttonThree.classList.add(`selected`)
+
     for (square of everyOppSquare){
         square.classList.remove(`opp-boat`)
     }
