@@ -261,10 +261,15 @@ MA1.addEventListener(`click`, () => {
 let enemyHits = 0;
 let myHits = 0;
 const winLoseSection = document.querySelector(`#win-lose`)
+const winLoseSectionTwo = document.querySelector(`#win-lose-two`)
 const youWin = document.createElement(`h1`)
 youWin.innerText = `YOU WIN!`;
+const youWinTwo = document.createElement(`h1`)
+youWinTwo.innerText = `YOU WIN!`;
 const youLose = document.createElement(`h1`)
 youLose.innerText = `YOU LOSE`;
+const youLoseTwo = document.createElement(`h1`)
+youLoseTwo.innerText = `YOU LOSE`;
 
 
 // Check for Winning Conditions 
@@ -272,9 +277,11 @@ function winLoseCheck() {
     if (enemyHits === 17){
         // alert(`YOU LOSE!!!`);
         winLoseSection.append(youLose)
+        winLoseSectionTwo.append(youLoseTwo)
     } else if (myHits === 17) {
         // alert(`YOU WIN!!!`);
         winLoseSection.append(youWin)
+        winLoseSectionTwo.append(youWinTwo)
     }
 }
 
