@@ -258,8 +258,8 @@ MA1.addEventListener(`click`, () => {
     alert(`Your A1`)
 });
 
-let enemyHits = 0;
-let myHits = 0;
+
+
 const winLoseSection = document.querySelector(`#win-lose`)
 const winLoseSectionTwo = document.querySelector(`#win-lose-two`)
 const youWin = document.createElement(`h1`)
@@ -271,22 +271,37 @@ youLose.innerText = `YOU LOSE`;
 const youLoseTwo = document.createElement(`h1`)
 youLoseTwo.innerText = `YOU LOSE`;
 
+let enemyHits = 0;
+let myHits = 0;
+let myMisses = 0;
+
+// Adding endgame statistics to page
+const totalAttacks = document.createElement(`h4`);
+const yourHits = document.createElement(`h4`);
+const yourMisses = document.createElement(`h4`);
+const accuracy = document.createElement(`h4`);
+
 
 // Check for Winning Conditions 
 function winLoseCheck() {
+    totalAttacks.innerText = `Total Attacks: ${myHits + myMisses}`;
+    yourHits.innerText = `Total Hits: ${myHits}`;
+    yourMisses.innerText = `Total Misses: ${myMisses}`;
+    const accuracyEquation = Math.floor(((myHits / (myHits + myMisses)) % 100) * 100);
+    accuracy.innerText = `Accuracy: ${accuracyEquation}%`;
     if (enemyHits === 17){
         // alert(`YOU LOSE!!!`);
         winLoseSection.append(youLose)
-        winLoseSectionTwo.append(youLoseTwo)
+        winLoseSectionTwo.append(youLoseTwo, totalAttacks, yourHits, yourMisses, accuracy)
     } else if (myHits === 17) {
         // alert(`YOU WIN!!!`);
         winLoseSection.append(youWin)
-        winLoseSectionTwo.append(youWinTwo)
+        winLoseSectionTwo.append(youWinTwo, totalAttacks, yourHits, yourMisses, accuracy)
     }
 }
 
-function attack(place) {
-
+// Attack function used by player and computer
+function attack(place, id) {
     if (place.classList == `hit-boat` || place.classList == `miss-boat`) {
         return;
     } else if (place.classList == `my-boat` || place.classList == `opp-boat`) {
@@ -301,29 +316,43 @@ function attack(place) {
         place.classList.add(`hit-boat`);
         winLoseCheck();
     } else {
+        if (!(id == `opponent`)) {
+            myMisses++;
+        }
         place.classList.remove(`opp-boat`);
         place.classList.remove(`my-boat`);
         place.classList.add(`miss-boat`);
     }
-
+}
+// Computer's random selection
+function randomAttack() {
+    while (difficulty > 0) {
+        const randomHori = Math.floor(Math.random() * 10);
+        const randomVert = Math.floor(Math.random() * 10);
+        const location = mySquares[randomHori][randomVert];
+        attack(location, `opponent`);
+        difficulty--;
+    }
+    difficulty = originalDifficulty;
 }
 
-const rooky = document.querySelector(`#rooky`)
+// Difficulties
+const rookie = document.querySelector(`#rookie`)
 const soldier = document.querySelector(`#soldier`)
 const general = document.querySelector(`#general`)
 const master = document.querySelector(`#master`)
-const difficultyArray = [rooky, soldier, general, master]
+const difficultyArray = [rookie, soldier, general, master]
 
 let difficulty = 1;
 let originalDifficulty = difficulty;
 
-rooky.addEventListener(`click`, () => {
+rookie.addEventListener(`click`, () => {
     difficulty = 1;
     originalDifficulty = difficulty;
     for (item of difficultyArray) {
         item.classList.remove(`selected`)
     }
-    rooky.classList.add(`selected`)
+    rookie.classList.add(`selected`)
 })
 soldier.addEventListener(`click`, () => {
     difficulty = 2;
@@ -350,74 +379,59 @@ master.addEventListener(`click`, () => {
     master.classList.add(`selected`)
 })
 
-function randomAttack() {
-
-    while (difficulty > 0) {
-        const randomHori = Math.floor(Math.random() * 10);
-        const randomVert = Math.floor(Math.random() * 10);
-        const location = mySquares[randomHori][randomVert];
-        attack(location);
-        difficulty--;
-    }
-    difficulty = originalDifficulty;
-
-}
-
 // Selecting the ships for choosing locations
-{
-    let selectedShip;
-    // const fiveLong = document.querySelector(`#five-long`);
-    // const fourLong = document.querySelector(`#four-long`);
-    // const threeLong1 = document.querySelector(`#three-long`);
-    // const threeLong2 = document.querySelector(`#three-long-two`);
-    // const twoLong = document.querySelector(`#two-long`);
+// {
+//     let selectedShip;
+//     const fiveLong = document.querySelector(`#five-long`);
+//     const fourLong = document.querySelector(`#four-long`);
+//     const threeLong1 = document.querySelector(`#three-long`);
+//     const threeLong2 = document.querySelector(`#three-long-two`);
+//     const twoLong = document.querySelector(`#two-long`);
 
-    // // Selecting the ship you want to place
-    // fiveLong.addEventListener(`click`, () => {
-    //     selectedShip = `5`;
-    //     console.log(selectedShip);
-    // }); 
-    // fourLong.addEventListener(`click`, () => {
-    //     selectedShip = `4`;
-    //     console.log(selectedShip);
-    // }); 
-    // threeLong1.addEventListener(`click`, () => {
-    //     selectedShip = `3-1`;
-    //     console.log(selectedShip);
-    // }); 
-    // threeLong2.addEventListener(`click`, () => {
-    //     selectedShip = `3-2`;
-    //     console.log(selectedShip);
-    // }); 
-    // twoLong.addEventListener(`click`, () => {
-    //     selectedShip = `2`;
-    //     console.log(selectedShip);
-    // });
+//     // Selecting the ship you want to place
+//     fiveLong.addEventListener(`click`, () => {
+//         selectedShip = `5`;
+//         console.log(selectedShip);
+//     }); 
+//     fourLong.addEventListener(`click`, () => {
+//         selectedShip = `4`;
+//         console.log(selectedShip);
+//     }); 
+//     threeLong1.addEventListener(`click`, () => {
+//         selectedShip = `3-1`;
+//         console.log(selectedShip);
+//     }); 
+//     threeLong2.addEventListener(`click`, () => {
+//         selectedShip = `3-2`;
+//         console.log(selectedShip);
+//     }); 
+//     twoLong.addEventListener(`click`, () => {
+//         selectedShip = `2`;
+//         console.log(selectedShip);
+//     });
 
-    MF2.addEventListener(`mouseover`, () => {
-        if (true) {
-            const addClass = [];
-            addClass.push(MH2, MG2, MF2, ME2, MD2)
-            // console.log(addClass);
-            for (element of addClass) {
-                element.classList.add(`hover`)
-            }
-        }
+//     MF2.addEventListener(`mouseover`, () => {
+//         if (true) {
+//             const addClass = [];
+//             addClass.push(MH2, MG2, MF2, ME2, MD2)
+//             // console.log(addClass);
+//             for (element of addClass) {
+//                 element.classList.add(`hover`)
+//             }
+//         }
 
-        MF2.addEventListener(`mouseleave`, () => {
-            const addClass = [];
-            addClass.push(MH2, MG2, MF2, ME2, MD2)
-            for (element of addClass) {
-                element.classList.remove(`hover`)
-            }
-        })
-    })
-}
+//         MF2.addEventListener(`mouseleave`, () => {
+//             const addClass = [];
+//             addClass.push(MH2, MG2, MF2, ME2, MD2)
+//             for (element of addClass) {
+//                 element.classList.remove(`hover`)
+//             }
+//         })
+//     })
+// }
 
 
-// PRESET ONE
-// Opponent
-
+// PRESETS SELECTION
 let preset = 1;
 
 const buttonOne = document.querySelector(`#p-one`)
