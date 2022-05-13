@@ -248,15 +248,7 @@ const mySquaresJ = [MJ1, MJ2, MJ3, MJ4, MJ5, MJ6, MJ7, MJ8, MJ9, MJ0];
 const mySquares = [mySquaresA, mySquaresB, mySquaresC, mySquaresD, mySquaresE, mySquaresF, mySquaresG, mySquaresH, mySquaresI, mySquaresJ];
 const everyMySquare = [...mySquaresA, ...mySquaresB, ...mySquaresC, ...mySquaresD, ...mySquaresE, ...mySquaresF, ...mySquaresG, ...mySquaresH, ...mySquaresI, ...mySquaresJ];
 console.log(everyMySquare);
-
-
-// Checking the selectors work
-OA1.addEventListener(`click`, () => {
-    alert(`Opponent's A1`)
-});
-MA1.addEventListener(`click`, () => {
-    alert(`Your A1`)
-});
+const everyMySquareTwo = everyMySquare;
 
 
 
@@ -324,14 +316,20 @@ function attack(place, id) {
         place.classList.add(`miss-boat`);
     }
 }
+
 // Computer's random selection
+let freeTiles = 100;
 function randomAttack() {
     while (difficulty > 0) {
-        const randomHori = Math.floor(Math.random() * 10);
-        const randomVert = Math.floor(Math.random() * 10);
-        const location = mySquares[randomHori][randomVert];
+        // const randomHori = Math.floor(Math.random() * 10);
+        // const randomVert = Math.floor(Math.random() * 10);
+        // const location = mySquares[randomHori][randomVert];
+        const randomNumber = Math.floor(Math.random() * freeTiles)
+        const location = everyMySquareTwo[randomNumber];
+        everyMySquareTwo.splice(randomNumber, 1);
         attack(location, `opponent`);
         difficulty--;
+        freeTiles--;
     }
     difficulty = originalDifficulty;
 }
@@ -379,56 +377,7 @@ master.addEventListener(`click`, () => {
     master.classList.add(`selected`)
 })
 
-// Selecting the ships for choosing locations
-// {
-//     let selectedShip;
-//     const fiveLong = document.querySelector(`#five-long`);
-//     const fourLong = document.querySelector(`#four-long`);
-//     const threeLong1 = document.querySelector(`#three-long`);
-//     const threeLong2 = document.querySelector(`#three-long-two`);
-//     const twoLong = document.querySelector(`#two-long`);
 
-//     // Selecting the ship you want to place
-//     fiveLong.addEventListener(`click`, () => {
-//         selectedShip = `5`;
-//         console.log(selectedShip);
-//     }); 
-//     fourLong.addEventListener(`click`, () => {
-//         selectedShip = `4`;
-//         console.log(selectedShip);
-//     }); 
-//     threeLong1.addEventListener(`click`, () => {
-//         selectedShip = `3-1`;
-//         console.log(selectedShip);
-//     }); 
-//     threeLong2.addEventListener(`click`, () => {
-//         selectedShip = `3-2`;
-//         console.log(selectedShip);
-//     }); 
-//     twoLong.addEventListener(`click`, () => {
-//         selectedShip = `2`;
-//         console.log(selectedShip);
-//     });
-
-//     MF2.addEventListener(`mouseover`, () => {
-//         if (true) {
-//             const addClass = [];
-//             addClass.push(MH2, MG2, MF2, ME2, MD2)
-//             // console.log(addClass);
-//             for (element of addClass) {
-//                 element.classList.add(`hover`)
-//             }
-//         }
-
-//         MF2.addEventListener(`mouseleave`, () => {
-//             const addClass = [];
-//             addClass.push(MH2, MG2, MF2, ME2, MD2)
-//             for (element of addClass) {
-//                 element.classList.remove(`hover`)
-//             }
-//         })
-//     })
-// }
 
 
 // PRESETS SELECTION
