@@ -480,7 +480,7 @@ buttonThree.addEventListener(`click`, () => {
     const presetOneOpponent = [
         OB4, OB8, OB7, OB6, OB5,
         OI3, OI4, OI5, OI6,
-        OE2, OD2, OC2,
+        OE1, OD1, OC1,
         OE5, OF5, OG5,
         OE9, OE8
     ];
@@ -519,7 +519,7 @@ const presetOneOpponent = [
     OB2, OB3, OB4, OB5,
     OH7, OH8, OH9,
     OH2, OG2, OF2,
-    OD9, OD8
+    OD0, OC0
 ];
 for (square of presetOneOpponent) {
     square.classList.add(`opp-boat`)
