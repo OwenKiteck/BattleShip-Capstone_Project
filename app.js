@@ -500,7 +500,7 @@ buttonThree.addEventListener(`click`, () => {
     }
 })
 
-// Preset 3
+// Preset 4
 buttonFour.addEventListener(`click`, () => {
 for (item of buttonArray) {
     item.classList.remove(`selected`)
