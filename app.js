@@ -517,7 +517,7 @@ for (square of everyMySquare) {
 const presetOneOpponent = [
     OE5, OF5, OG5, OH5, OI5,
     OB2, OB3, OB4, OB5,
-    OH7, OH8, OH9,
+    OH6, OH7, OH8,
     OH2, OG2, OF2,
     OD0, OC0
 ];
