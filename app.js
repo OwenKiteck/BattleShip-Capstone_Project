@@ -369,7 +369,7 @@ general.addEventListener(`click`, () => {
     general.classList.add(`selected`)
 })
 master.addEventListener(`click`, () => {
-    difficulty = 5;
+    difficulty = 4;
     originalDifficulty = difficulty;
     for (item of difficultyArray) {
         item.classList.remove(`selected`)
